@@ -59,14 +59,21 @@ export default function DaySchedule({
                     prefix = "Tomorrow, ";
                 }
                 return (
-                    <h2 className="text-xl md:text-2xl font-semibold mb-2 md:mb-4 border-b pb-2">
-                        {prefix +
-                            normalizedDate.toLocaleDateString("en-US", {
-                                month: "long",
-                                day: "numeric",
-                                year: "numeric",
+                    <>
+                        <h2 className="text-xl md:text-2xl font-semibold mb-1 md:mb-1">
+                            {prefix +
+                                normalizedDate.toLocaleDateString("en-US", {
+                                    month: "long",
+                                    day: "numeric",
+                                    year: "numeric",
+                                })}
+                        </h2>
+                        <p className="text-s text-gray-500 border-b pb-2 md:mb-2">
+                            {normalizedDate.toLocaleDateString("en-US", {
+                                weekday: "long",
                             })}
-                    </h2>
+                        </p>
+                    </>
                 );
             })()}
             {prayerTimes ? (
