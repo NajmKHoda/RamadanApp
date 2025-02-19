@@ -1,0 +1,42 @@
+{
+  "2025-02-18": [
+    {
+      "type": "taraweeh",
+      "time": "20:30",
+      "location": "UCLA Islamic Center"
+    },
+    {
+      "type": "iftaar",
+      "time": "18:15",
+      "location": "Ackerman Grand Ballroom",
+      "details": "Sponsored by Muslim Student Association"
+    }
+  ],
+  "2025-02-19": [
+    {
+      "type": "taraweeh",
+      "time": "20:30",
+      "location": "UCLA Islamic Center"
+    },
+    {
+      "type": "other",
+      "time": "14:00",
+      "location": "Bruin Plaza",
+      "details": "Ramadan Awareness Tabling"
+    }
+  ],
+  "2025-02-20": [
+    {
+      "type": "taraweeh",
+      "time": "20:30",
+      "location": "UCLA Islamic Center"
+    },
+    {
+      "type": "iftaar",
+      "time": "18:20",
+      "location": "De Neve Plaza Room",
+      "details": "Sponsored by Islamic Relief Club"
+    }
+  ]
+}
+
