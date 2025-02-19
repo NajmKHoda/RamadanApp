@@ -7,9 +7,8 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
-    title: "UCLA MSA Ramadan Schedule",
+    title: "UCLA MSA Ramadan Schedule | Powered by AMIN",
     description: "Ramadan schedule for UCLA Muslim Student Association",
-    generator: "v0.dev",
 };
 
 export default function RootLayout({

@@ -103,29 +103,34 @@ export default function Home() {
                 </h1>
                 {isClient &&
                     (isMobile ? (
-                        <Swiper
-                            spaceBetween={20}
-                            slidesPerView={1}
-                            centeredSlides={true}
-                            pagination={{ clickable: true }}
-                            navigation={true}
-                            modules={[Pagination, Navigation]}
-                            className="mb-8"
-                        >
-                            {days.map((day, index) => (
-                                <SwiperSlide key={index}>
-                                    <DaySchedule
-                                        day={
-                                            day as
-                                                | "today"
-                                                | "tomorrow"
-                                                | "dayAfterTomorrow"
-                                        }
-                                        prayerTimes={prayerTimes[index]}
-                                    />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                        <>
+                            <Swiper
+                                spaceBetween={20}
+                                slidesPerView={1}
+                                centeredSlides={true}
+                                pagination={{
+                                    clickable: true,
+                                    el: ".swiper-pagination-bottom",
+                                }}
+                                modules={[Pagination]}
+                                className="mb-16" // extra bottom spacing for pagination below
+                            >
+                                {days.map((day, index) => (
+                                    <SwiperSlide key={index}>
+                                        <DaySchedule
+                                            day={
+                                                day as
+                                                    | "today"
+                                                    | "tomorrow"
+                                                    | "dayAfterTomorrow"
+                                            }
+                                            prayerTimes={prayerTimes[index]}
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                            <div className="swiper-pagination-bottom flex justify-center"></div>
+                        </>
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {days.map((day, index) => (
