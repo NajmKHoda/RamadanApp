@@ -98,9 +98,6 @@ export default function Home() {
         <main className="min-h-screen bg-gray-100">
             <Header />
             <div className="container mx-auto px-4 py-8">
-                <h1 className="text-3xl font-bold mb-8 text-center">
-                    UCLA MSA Ramadan Schedule
-                </h1>
                 {isClient &&
                     (isMobile ? (
                         <>
