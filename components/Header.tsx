@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
     return (
-        <header className="bg-gradient-to-r from-gray-100 to-gray-200 py-3 px-4 border-b border-gray-200">
+        <header className="bg-gradient-to-r from-gray-100 to-gray-200 py-5 px-4 border-b border-gray-200 drop-shadow-md">
             <div className="container mx-auto flex items-center justify-center space-x-2">
                 {/* Islamic-inspired crescent icon */}
                 <svg

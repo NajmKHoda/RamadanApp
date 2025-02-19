@@ -190,7 +190,7 @@ export default function Home() {
                                 setDateInput(formatDateForInput(today));
                             }}
                         >
-                            Back to today
+                            Today
                         </button>
                     )}
                 </div>
