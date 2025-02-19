@@ -77,15 +77,19 @@ export default function Home() {
         return () => window.removeEventListener("resize", checkMobile);
     }, [selectedDate]);
 
-    // Debounce date update: update selectedDate 500ms after last change.
+    // Replace the previous debounced effect with this:
     useEffect(() => {
-        const timer = setTimeout(() => {
-            if (dateInput && !isNaN(Date.parse(dateInput))) {
+        if (dateInput && !isNaN(Date.parse(dateInput))) {
+            if (isMobile) {
                 setSelectedDate(new Date(dateInput + "T00:00:00"));
+            } else {
+                const timer = setTimeout(() => {
+                    setSelectedDate(new Date(dateInput + "T00:00:00"));
+                }, 500);
+                return () => clearTimeout(timer);
             }
-        }, 500);
-        return () => clearTimeout(timer);
-    }, [dateInput]);
+        }
+    }, [dateInput, isMobile]);
 
     const days = ["today", "tomorrow", "dayAfterTomorrow"];
 
