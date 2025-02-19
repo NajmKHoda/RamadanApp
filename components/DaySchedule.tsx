@@ -58,7 +58,6 @@ export default function DaySchedule({
         prefix = "Tomorrow, ";
     }
 
-    // Setup dynamic countdown based solely on maghrib time
     useEffect(() => {
         if (isToday && prayerTimes && prayerTimes["maghrib"]) {
             const targetTimeStr = prayerTimes["maghrib"];
