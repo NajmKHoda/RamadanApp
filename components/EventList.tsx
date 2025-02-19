@@ -8,7 +8,7 @@ interface EventListProps {
 }
 
 interface Event {
-    type: "taraweeh" | "iftaar" | "other";
+    type: "taraweeh" | "iftaar" | "Jumaa" | "other";
     time: string;
     location: string;
     details?: string;

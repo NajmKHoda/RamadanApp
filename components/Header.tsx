@@ -12,7 +12,7 @@ export default function Header() {
                 </Link>
             </div>
             <div className="container mx-auto flex justify-center items-center">
-                <p>Powered by AMIN</p>
+                <p>Powered by AMIN @ UCLA</p>
             </div>
         </header>
     );

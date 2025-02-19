@@ -16,14 +16,17 @@ interface PrayerTime {
 }
 
 export default function Home() {
+    const formatDateForInput = (date: Date) => date.toISOString().split("T")[0];
+
     const [selectedDate, setSelectedDate] = useState(new Date(BASE_DATE));
+    const [dateInput, setDateInput] = useState(
+        formatDateForInput(new Date(BASE_DATE))
+    );
     const [isClient, setIsClient] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const [prayerTimes, setPrayerTimes] = useState<PrayerTime[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-
-    const formatDateForInput = (date: Date) => date.toISOString().split("T")[0];
 
     useEffect(() => {
         setIsClient(true);
@@ -157,12 +160,17 @@ export default function Home() {
                     </p>
                     <input
                         type="date"
-                        value={formatDateForInput(selectedDate)}
-                        onChange={(e) =>
-                            setSelectedDate(
-                                new Date(e.target.value + "T00:00:00")
-                            )
-                        }
+                        value={dateInput}
+                        onChange={(e) => setDateInput(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                setSelectedDate(
+                                    new Date(
+                                        e.currentTarget.value + "T00:00:00"
+                                    )
+                                );
+                            }
+                        }}
                         className="p-2 border rounded"
                         min="2025-02-28"
                         max="2025-03-30"
