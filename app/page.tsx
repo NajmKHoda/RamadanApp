@@ -180,6 +180,19 @@ export default function Home() {
                         min="2025-02-28"
                         max="2025-03-30"
                     />
+                    {/* Button to return to today if selectedDate is not current day */}
+                    {formatDateForInput(selectedDate) !==
+                        formatDateForInput(new Date()) && (
+                        <button
+                            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+                            onClick={() => {
+                                const today = new Date();
+                                setDateInput(formatDateForInput(today));
+                            }}
+                        >
+                            Back to today
+                        </button>
+                    )}
                 </div>
                 <Footer />
             </div>
