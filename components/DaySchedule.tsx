@@ -84,7 +84,7 @@ export default function DaySchedule({
         <div
             className={`rounded-xl p-4 md:p-6 h-full ${
                 isToday
-                    ? "border-2 border-blue-500 shadow-lg"
+                    ? "border-2 border-blue-500 shadow-lg bg-white"
                     : "bg-white shadow-md"
             }`}
         >
