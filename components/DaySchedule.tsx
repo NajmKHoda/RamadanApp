@@ -8,20 +8,26 @@ import { BASE_DATE } from "@/constants/baseDate";
 interface DayScheduleProps {
     day: "today" | "tomorrow" | "dayAfterTomorrow";
     prayerTimes: { [key: string]: string } | undefined;
+    // optional baseDate prop to override the default BASE_DATE
+    baseDate?: Date;
 }
 
-export default function DaySchedule({ day, prayerTimes }: DayScheduleProps) {
+export default function DaySchedule({
+    day,
+    prayerTimes,
+    baseDate,
+}: DayScheduleProps) {
     const [date, setDate] = useState<Date>(new Date());
 
     useEffect(() => {
-        const base = new Date(BASE_DATE);
+        const base = baseDate ? new Date(baseDate) : new Date(BASE_DATE);
         if (day === "tomorrow") {
             base.setDate(base.getDate() + 1);
         } else if (day === "dayAfterTomorrow") {
             base.setDate(base.getDate() + 2);
         }
         setDate(base);
-    }, [day]);
+    }, [day, baseDate]);
 
     return (
         <div className="bg-white rounded-lg shadow-md p-4 md:p-6 h-full">
@@ -47,7 +53,7 @@ export default function DaySchedule({ day, prayerTimes }: DayScheduleProps) {
             {prayerTimes ? (
                 <PrayerTimes prayerTimes={prayerTimes} />
             ) : (
-                <div className="text-center text- gray-500">
+                <div className="text-center text-gray-500">
                     Prayer times not available
                 </div>
             )}

@@ -15,11 +15,14 @@ interface PrayerTime {
 }
 
 export default function Home() {
+    const [selectedDate, setSelectedDate] = useState(new Date(BASE_DATE));
     const [isClient, setIsClient] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const [prayerTimes, setPrayerTimes] = useState<PrayerTime[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
+    const formatDateForInput = (date: Date) => date.toISOString().split("T")[0];
 
     useEffect(() => {
         setIsClient(true);
@@ -31,7 +34,7 @@ export default function Home() {
             setLoading(true);
             setError(null);
             try {
-                const base = new Date(BASE_DATE);
+                const base = new Date(selectedDate);
                 const oneDay = 86400000; // milliseconds in one day
                 const dates = [
                     new Date(base),
@@ -68,7 +71,7 @@ export default function Home() {
         fetchPrayerTimes();
 
         return () => window.removeEventListener("resize", checkMobile);
-    }, []);
+    }, [selectedDate]);
 
     const days = ["today", "tomorrow", "dayAfterTomorrow"];
 
@@ -98,6 +101,20 @@ export default function Home() {
         <main className="min-h-screen bg-gray-100">
             <Header />
             <div className="container mx-auto px-4 py-8">
+                <div className="mb-6 flex justify-center">
+                    <input
+                        type="date"
+                        value={formatDateForInput(selectedDate)}
+                        onChange={(e) =>
+                            setSelectedDate(
+                                new Date(e.target.value + "T00:00:00")
+                            )
+                        }
+                        className="p-2 border rounded"
+                        min="2025-02-28"
+                        max="2025-03-30"
+                    />
+                </div>
                 {isClient &&
                     (isMobile ? (
                         <>
@@ -122,6 +139,7 @@ export default function Home() {
                                                     | "dayAfterTomorrow"
                                             }
                                             prayerTimes={prayerTimes[index]}
+                                            baseDate={selectedDate}
                                         />
                                     </SwiperSlide>
                                 ))}
@@ -140,6 +158,7 @@ export default function Home() {
                                             | "dayAfterTomorrow"
                                     }
                                     prayerTimes={prayerTimes[index]}
+                                    baseDate={selectedDate}
                                 />
                             ))}
                         </div>
