@@ -77,6 +77,16 @@ export default function Home() {
         return () => window.removeEventListener("resize", checkMobile);
     }, [selectedDate]);
 
+    // Debounce date update: update selectedDate 500ms after last change.
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (dateInput && !isNaN(Date.parse(dateInput))) {
+                setSelectedDate(new Date(dateInput + "T00:00:00"));
+            }
+        }, 500);
+        return () => clearTimeout(timer);
+    }, [dateInput]);
+
     const days = ["today", "tomorrow", "dayAfterTomorrow"];
 
     if (loading) {
@@ -162,15 +172,6 @@ export default function Home() {
                         type="date"
                         value={dateInput}
                         onChange={(e) => setDateInput(e.target.value)}
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                                setSelectedDate(
-                                    new Date(
-                                        e.currentTarget.value + "T00:00:00"
-                                    )
-                                );
-                            }
-                        }}
                         className="p-2 border rounded"
                         min="2025-02-28"
                         max="2025-03-30"
