@@ -1,42 +1,328 @@
 {
-  "2025-02-18": [
+  "2025-02-28": [
     {
       "type": "taraweeh",
-      "time": "20:30",
-      "location": "UCLA Islamic Center"
+      "time": "7PM",
+      "location": "Pauley Pavillion SE",
+      "details": ""
+    }
+  ],
+  "2025-03-01": [
+    {
+      "type": "taraweeh",
+      "time": "7PM",
+      "location": "Pauley Pavillion SE",
+      "details": ""
+    }
+  ],
+  "2025-03-02": [
+    {
+      "type": "taraweeh",
+      "time": "7PM",
+      "location": "Pauley Pavillion SE",
+      "details": ""
+    }
+  ],
+  "2025-03-03": [
+    {
+      "type": "iftaar",
+      "time": "",
+      "location": "Drake",
+      "details": "New York Chicken & Gyro"
+    },
+    {
+      "type": "taraweeh",
+      "time": "7PM",
+      "location": "Drake Upper Concourse",
+      "details": ""
+    }
+  ],
+  "2025-03-04": [
+    {
+      "type": "iftaar",
+      "time": "",
+      "location": "Drake",
+      "details": "New India's Oven"
+    },
+    {
+      "type": "taraweeh",
+      "time": "7PM",
+      "location": "Drake Upper Concourse",
+      "details": ""
+    }
+  ],
+  "2025-03-05": [
+    {
+      "type": "iftaar",
+      "time": "",
+      "location": "Drake",
+      "details": "House of Mandi"
+    },
+    {
+      "type": "taraweeh",
+      "time": "7PM",
+      "location": "Pauley Pavillion SE",
+      "details": ""
+    }
+  ],
+  "2025-03-06": [
+    {
+      "type": "iftaar",
+      "time": "",
+      "location": "Drake",
+      "details": "Shamshiri"
+    },
+    {
+      "type": "taraweeh",
+      "time": "7PM",
+      "location": "Drake Upper Concourse",
+      "details": ""
+    }
+  ],
+  "2025-03-07": [
+    {
+      "type": "taraweeh",
+      "time": "7PM",
+      "location": "Pauley Pavillion",
+      "details": ""
+    }
+  ],
+  "2025-03-08": [
+    {
+      "type": "taraweeh",
+      "time": "7PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-09": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "Pauley Pavillion",
+      "details": ""
+    }
+  ],
+  "2025-03-10": [
+    {
+      "type": "iftaar",
+      "time": "",
+      "location": "Pauley",
+      "details": "Simpang Asia + Magnolia Bakery"
+    },
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "Pauley Pavillion",
+      "details": ""
+    }
+  ],
+  "2025-03-11": [
+    {
+      "type": "iftaar",
+      "time": "",
+      "location": "Pauley",
+      "details": "Al-Watan"
+    },
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "Pauley Pavillion",
+      "details": ""
+    }
+  ],
+  "2025-03-12": [
+    {
+      "type": "iftaar",
+      "time": "",
+      "location": "Pauley",
+      "details": "Banadir Somali restaurant"
+    },
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "Pauley Pavillion",
+      "details": ""
+    }
+  ],
+  "2025-03-13": [
+    {
+      "type": "iftaar",
+      "time": "",
+      "location": "Pauley",
+      "details": "Fresh Corn Grill"
     },
     {
       "type": "iftaar",
-      "time": "18:15",
-      "location": "Ackerman Grand Ballroom",
-      "details": "Sponsored by Muslim Student Association"
-    }
-  ],
-  "2025-02-19": [
-    {
-      "type": "taraweeh",
-      "time": "20:30",
-      "location": "UCLA Islamic Center"
+      "time": "",
+      "location": "",
+      "details": ""
     },
     {
-      "type": "other",
-      "time": "14:00",
-      "location": "Bruin Plaza",
-      "details": "Ramadan Awareness Tabling"
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "Pauley Pavillion",
+      "details": ""
     }
   ],
-  "2025-02-20": [
+  "2025-03-14": [
     {
       "type": "taraweeh",
-      "time": "20:30",
-      "location": "UCLA Islamic Center"
-    },
+      "time": "8PM",
+      "location": "Pauley Pavillion",
+      "details": ""
+    }
+  ],
+  "2025-03-15": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-16": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "Pauley Pavillion",
+      "details": ""
+    }
+  ],
+  "2025-03-17": [
     {
       "type": "iftaar",
-      "time": "18:20",
-      "location": "De Neve Plaza Room",
-      "details": "Sponsored by Islamic Relief Club"
+      "time": "",
+      "location": "Drake",
+      "details": "Brother Lateef's"
+    },
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-18": [
+    {
+      "type": "iftaar",
+      "time": "",
+      "location": "Drake",
+      "details": "Shawarma House Anaheim + Desert (TBA)"
+    },
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-19": [
+    {
+      "type": "iftaar",
+      "time": "",
+      "location": "Drake",
+      "details": "Sunnin Lebanese"
+    },
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-20": [
+    {
+      "type": "iftaar",
+      "time": "",
+      "location": "Drake",
+      "details": "Meklatounsia"
+    },
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "Drake Upper Concourse",
+      "details": ""
+    }
+  ],
+  "2025-03-21": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-22": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-23": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "Pauley Pavillion",
+      "details": ""
+    }
+  ],
+  "2025-03-24": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-25": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-26": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-27": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-28": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-29": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
+    }
+  ],
+  "2025-03-30": [
+    {
+      "type": "taraweeh",
+      "time": "8PM",
+      "location": "SAC Gym Courts 1-3",
+      "details": ""
     }
   ]
 }
-
