@@ -31,25 +31,44 @@ export default function DaySchedule({
 
     return (
         <div className="bg-white rounded-lg shadow-md p-4 md:p-6 h-full">
-            <h2 className="text-xl md:text-2xl font-semibold mb-2 md:mb-4 border-b pb-2">
-                {day === "today"
-                    ? `Today, ${date.toLocaleDateString("en-US", {
-                          month: "long",
-                          day: "numeric",
-                          year: "numeric",
-                      })}`
-                    : day === "tomorrow"
-                    ? `Tomorrow, ${date.toLocaleDateString("en-US", {
-                          month: "long",
-                          day: "numeric",
-                          year: "numeric",
-                      })}`
-                    : date.toLocaleDateString("en-US", {
-                          month: "long",
-                          day: "numeric",
-                          year: "numeric",
-                      })}
-            </h2>
+            {
+                // Compute prefixes based on actual current date
+                // Normalize current date to midnight
+            }
+            {(() => {
+                const normalizedCurrent = new Date();
+                normalizedCurrent.setHours(0, 0, 0, 0);
+                const normalizedTomorrow = new Date(normalizedCurrent);
+                normalizedTomorrow.setDate(normalizedTomorrow.getDate() + 1);
+                // normalize the schedule's date
+                const normalizedDate = new Date(
+                    date.getFullYear(),
+                    date.getMonth(),
+                    date.getDate()
+                );
+                let prefix = "";
+                if (
+                    day === "today" &&
+                    normalizedDate.getTime() === normalizedCurrent.getTime()
+                ) {
+                    prefix = "Today, ";
+                } else if (
+                    day === "tomorrow" &&
+                    normalizedDate.getTime() === normalizedTomorrow.getTime()
+                ) {
+                    prefix = "Tomorrow, ";
+                }
+                return (
+                    <h2 className="text-xl md:text-2xl font-semibold mb-2 md:mb-4 border-b pb-2">
+                        {prefix +
+                            normalizedDate.toLocaleDateString("en-US", {
+                                month: "long",
+                                day: "numeric",
+                                year: "numeric",
+                            })}
+                    </h2>
+                );
+            })()}
             {prayerTimes ? (
                 <PrayerTimes prayerTimes={prayerTimes} />
             ) : (

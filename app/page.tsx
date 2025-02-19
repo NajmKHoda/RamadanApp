@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { BASE_DATE } from "@/constants/baseDate";
+import Footer from "@/components/Footer";
 
 interface PrayerTime {
     [key: string]: string;
@@ -101,20 +102,6 @@ export default function Home() {
         <main className="min-h-screen bg-gray-100">
             <Header />
             <div className="container mx-auto px-4 py-8">
-                <div className="mb-6 flex justify-center">
-                    <input
-                        type="date"
-                        value={formatDateForInput(selectedDate)}
-                        onChange={(e) =>
-                            setSelectedDate(
-                                new Date(e.target.value + "T00:00:00")
-                            )
-                        }
-                        className="p-2 border rounded"
-                        min="2025-02-28"
-                        max="2025-03-30"
-                    />
-                </div>
                 {isClient &&
                     (isMobile ? (
                         <>
@@ -127,7 +114,7 @@ export default function Home() {
                                     el: ".swiper-pagination-bottom",
                                 }}
                                 modules={[Pagination]}
-                                className="mb-16" // extra bottom spacing for pagination below
+                                className="mb-4" // reduced bottom margin for minimal gap
                             >
                                 {days.map((day, index) => (
                                     <SwiperSlide key={index}>
@@ -163,6 +150,25 @@ export default function Home() {
                             ))}
                         </div>
                     ))}
+                {/* New Date Picker Section at Bottom */}
+                <div className="mt-8 flex flex-col items-center">
+                    <p className="mb-2 text-sm text-gray-700">
+                        Select date for preview:
+                    </p>
+                    <input
+                        type="date"
+                        value={formatDateForInput(selectedDate)}
+                        onChange={(e) =>
+                            setSelectedDate(
+                                new Date(e.target.value + "T00:00:00")
+                            )
+                        }
+                        className="p-2 border rounded"
+                        min="2025-02-28"
+                        max="2025-03-30"
+                    />
+                </div>
+                <Footer />
             </div>
         </main>
     );
