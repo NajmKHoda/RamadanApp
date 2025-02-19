@@ -3,22 +3,24 @@
 import { useState, useEffect } from "react";
 import PrayerTimes from "./PrayerTimes";
 import EventList from "./EventList";
+import { BASE_DATE } from "@/constants/baseDate";
 
 interface DayScheduleProps {
     day: "today" | "tomorrow" | "dayAfterTomorrow";
+    prayerTimes: { [key: string]: string } | undefined;
 }
 
-export default function DaySchedule({ day }: DayScheduleProps) {
+export default function DaySchedule({ day, prayerTimes }: DayScheduleProps) {
     const [date, setDate] = useState<Date>(new Date());
 
     useEffect(() => {
-        const today = new Date("March 3, 2025");
+        const base = new Date(BASE_DATE);
         if (day === "tomorrow") {
-            today.setDate(today.getDate() + 1);
+            base.setDate(base.getDate() + 1);
         } else if (day === "dayAfterTomorrow") {
-            today.setDate(today.getDate() + 2);
+            base.setDate(base.getDate() + 2);
         }
-        setDate(today);
+        setDate(base);
     }, [day]);
 
     return (
@@ -42,7 +44,13 @@ export default function DaySchedule({ day }: DayScheduleProps) {
                           year: "numeric",
                       })}
             </h2>
-            <PrayerTimes date={date} />
+            {prayerTimes ? (
+                <PrayerTimes prayerTimes={prayerTimes} />
+            ) : (
+                <div className="text-center text- gray-500">
+                    Prayer times not available
+                </div>
+            )}
             <EventList date={date} />
         </div>
     );

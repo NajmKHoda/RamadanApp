@@ -1,41 +1,30 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
 interface PrayerTimesProps {
-    date: Date;
-}
-
-interface PrayerTime {
-    [key: string]: string;
+    prayerTimes: {
+        [key: string]: string;
+    };
 }
 
 function convertTo12Hour(time24: string): string {
     // expects "HH:mm" format
     const [hourStr, minuteStr] = time24.split(":");
-    const hour24 = parseInt(hourStr);
+    const hour24 = Number.parseInt(hourStr);
     const ampm = hour24 >= 12 ? "PM" : "AM";
     const hour12 = hour24 % 12 || 12;
     return `${hour12}:${minuteStr} ${ampm}`;
 }
 
-export default function PrayerTimes({ date }: PrayerTimesProps) {
-    const [prayerTimes, setPrayerTimes] = useState<PrayerTime | null>(null);
-
-    useEffect(() => {
-        const fetchPrayerTimes = async () => {
-            const response = await fetch(
-                `/api/prayer-times?date=${date.toISOString()}`
-            );
-            const data = await response.json();
-            setPrayerTimes(data);
-        };
-
-        fetchPrayerTimes();
-    }, [date]);
-
-    if (!prayerTimes) {
-        return <div className="text-center">Loading prayer times...</div>;
+export default function PrayerTimes({ prayerTimes }: PrayerTimesProps) {
+    if (!prayerTimes || Object.keys(prayerTimes).length === 0) {
+        return (
+            <div className="mb-4 md:mb-6">
+                <h3 className="text-lg md:text-xl font-semibold mb-2">
+                    Prayer Times
+                </h3>
+                <p className="text-gray-500">Prayer times not available</p>
+            </div>
+        );
     }
 
     return (
