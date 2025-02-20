@@ -6,16 +6,15 @@ export default function Footer() {
             <div className="container mx-auto flex flex-col items-center">
                 {/* Main logo section in column */}
                 <div className="flex flex-col items-center mb-4">
-                    {/* Logo placeholder in a square */}
-                    <div className="w-12 h-12 bg-gray-600 flex items-center justify-center mb-2">
-                        {/* Replace this with your logo image */}
-                        <span className="text-sm">Logo</span>
-                    </div>
-                    <div className="text-center">
-                        <p className="text-xs">
-                            Advancement of Muslims in Innovation and Networking
-                        </p>
-                    </div>
+                    <img
+                        src="/amin-square-logo.png"
+                        alt="AMIN Logo"
+                        className="h-12 w-12 mb-2"
+                    />
+                    <p className="text-xs">
+                        &copy; {new Date().getFullYear()} AMIN. All rights
+                        reserved.
+                    </p>
                 </div>
                 {/* Social media logos updated with small dimensions and correct src */}
                 <div className="flex space-x-4 mb-4">
@@ -42,9 +41,6 @@ export default function Footer() {
                         />
                     </Link>
                 </div>
-                <p className="text-xs">
-                    &copy; {new Date().getFullYear()} AMIN. All rights reserved.
-                </p>
             </div>
         </footer>
     );
