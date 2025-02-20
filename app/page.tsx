@@ -16,12 +16,14 @@ interface PrayerTime {
 }
 
 export default function Home() {
-    const formatDateForInput = (date: Date) => date.toISOString().split("T")[0];
+    const formatDateForInput = (date: Date) => {
+        const offset = date.getTimezoneOffset();
+        const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
+        return adjustedDate.toISOString().split("T")[0];
+    };
 
-    const [selectedDate, setSelectedDate] = useState(new Date(BASE_DATE));
-    const [dateInput, setDateInput] = useState(
-        formatDateForInput(new Date(BASE_DATE))
-    );
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [dateInput, setDateInput] = useState(formatDateForInput(new Date()));
     const [isClient, setIsClient] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const [prayerTimes, setPrayerTimes] = useState<PrayerTime[]>([]);
