@@ -82,21 +82,21 @@ export default function DaySchedule({
         }
     }, [isToday, prayerTimes, date]);
 
-    // New: Countdown for suhoor using next day's fajr time between maghrib and fajr
+    // Updated suhoor countdown to use isha instead of maghrib
     useEffect(() => {
         if (
             isToday &&
             prayerTimes &&
-            prayerTimes["maghrib"] &&
+            prayerTimes["isha"] &&
             nextDayPrayerTimes &&
             nextDayPrayerTimes["fajr"]
         ) {
-            // Compute today's maghrib target time
-            const [maghribHour, maghribMinute] = prayerTimes["maghrib"]
+            // Compute today's isha target time instead of maghrib
+            const [ishaHour, ishaMinute] = prayerTimes["isha"]
                 .split(":")
                 .map(Number);
-            const maghribTime = new Date(date);
-            maghribTime.setHours(maghribHour, maghribMinute, 0, 0);
+            const ishaTime = new Date(date);
+            ishaTime.setHours(ishaHour, ishaMinute, 0, 0);
 
             // Compute tomorrow's fajr target time
             const tomorrow = new Date(date);
@@ -109,8 +109,8 @@ export default function DaySchedule({
 
             function updateSuhoorCountdown() {
                 const now = new Date();
-                // show suhoor countdown only if current time is after maghrib and before fajr
-                if (now > maghribTime && now < fajrTime) {
+                // show suhoor countdown only if current time is after isha and before fajr
+                if (now > ishaTime && now < fajrTime) {
                     const diff = fajrTime.getTime() - now.getTime();
                     setSuhoorTimeLeft(diff);
                 } else {
