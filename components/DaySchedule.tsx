@@ -161,7 +161,7 @@ export default function DaySchedule({
             {/* New: Countdown for Suhoor */}
             {isToday && suhoorTimeLeft > 0 && (
                 <p className="text-xs text-purple-500 mt-2">
-                    Time until Suhoor:{" "}
+                    Time until Fajr:{" "}
                     {suhoorTimeLeft < 60000
                         ? `${Math.floor(suhoorTimeLeft / 1000)}s`
                         : `${Math.floor(
