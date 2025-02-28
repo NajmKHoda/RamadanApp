@@ -146,6 +146,13 @@ export default function Home() {
                                             }
                                             prayerTimes={prayerTimes[index]}
                                             baseDate={selectedDate}
+                                            {...(day === "today" &&
+                                            prayerTimes[1]
+                                                ? {
+                                                      nextDayPrayerTimes:
+                                                          prayerTimes[1],
+                                                  }
+                                                : {})}
                                         />
                                     </SwiperSlide>
                                 ))}
@@ -165,6 +172,9 @@ export default function Home() {
                                     }
                                     prayerTimes={prayerTimes[index]}
                                     baseDate={selectedDate}
+                                    {...(day === "today" && prayerTimes[1]
+                                        ? { nextDayPrayerTimes: prayerTimes[1] }
+                                        : {})}
                                 />
                             ))}
                         </div>

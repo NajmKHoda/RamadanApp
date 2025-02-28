@@ -12,6 +12,8 @@ interface Event {
     time: string;
     location: string;
     details?: string;
+    name?: string;
+    organization?: string;
 }
 
 export default function EventList({ date }: EventListProps) {
@@ -40,8 +42,12 @@ export default function EventList({ date }: EventListProps) {
                             className="border-b pb-2 text-sm md:text-base"
                         >
                             <div className="font-semibold">
-                                {event.type.charAt(0).toUpperCase() +
-                                    event.type.slice(1)}
+                                {event.type === "other"
+                                    ? typeof event.name === undefined
+                                        ? "Other Event"
+                                        : event.name
+                                    : event.type.charAt(0).toUpperCase() +
+                                      event.type.slice(1)}
                             </div>
                             {event.type !== "iftaar" && (
                                 <div>
@@ -63,6 +69,14 @@ export default function EventList({ date }: EventListProps) {
                                         Details:
                                     </span>{" "}
                                     {event.details}
+                                </div>
+                            )}
+                            {event.type === "other" && (
+                                <div>
+                                    <span className="inline-block w-20">
+                                        Org:
+                                    </span>{" "}
+                                    {event.organization}
                                 </div>
                             )}
                         </li>

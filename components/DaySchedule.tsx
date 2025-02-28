@@ -10,15 +10,19 @@ interface DayScheduleProps {
     prayerTimes: { [key: string]: string } | undefined;
     // optional baseDate prop to override the default BASE_DATE
     baseDate?: Date;
+    // new optional prop for next day's prayer times (for suhoor countdown)
+    nextDayPrayerTimes?: { [key: string]: string };
 }
 
 export default function DaySchedule({
     day,
     prayerTimes,
     baseDate,
+    nextDayPrayerTimes,
 }: DayScheduleProps) {
     const [date, setDate] = useState<Date>(new Date());
     const [timeLeft, setTimeLeft] = useState<number>(0);
+    const [suhoorTimeLeft, setSuhoorTimeLeft] = useState<number>(0);
 
     useEffect(() => {
         const base = baseDate ? new Date(baseDate) : new Date(BASE_DATE);
@@ -78,6 +82,47 @@ export default function DaySchedule({
         }
     }, [isToday, prayerTimes, date]);
 
+    // New: Countdown for suhoor using next day's fajr time between maghrib and fajr
+    useEffect(() => {
+        if (
+            isToday &&
+            prayerTimes &&
+            prayerTimes["maghrib"] &&
+            nextDayPrayerTimes &&
+            nextDayPrayerTimes["fajr"]
+        ) {
+            // Compute today's maghrib target time
+            const [maghribHour, maghribMinute] = prayerTimes["maghrib"]
+                .split(":")
+                .map(Number);
+            const maghribTime = new Date(date);
+            maghribTime.setHours(maghribHour, maghribMinute, 0, 0);
+
+            // Compute tomorrow's fajr target time
+            const tomorrow = new Date(date);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const [fajrHour, fajrMinute] = nextDayPrayerTimes["fajr"]
+                .split(":")
+                .map(Number);
+            const fajrTime = new Date(tomorrow);
+            fajrTime.setHours(fajrHour, fajrMinute, 0, 0);
+
+            function updateSuhoorCountdown() {
+                const now = new Date();
+                // show suhoor countdown only if current time is after maghrib and before fajr
+                if (now > maghribTime && now < fajrTime) {
+                    const diff = fajrTime.getTime() - now.getTime();
+                    setSuhoorTimeLeft(diff);
+                } else {
+                    setSuhoorTimeLeft(0);
+                }
+            }
+            updateSuhoorCountdown();
+            const intervalId = setInterval(updateSuhoorCountdown, 1000);
+            return () => clearInterval(intervalId);
+        }
+    }, [isToday, prayerTimes, nextDayPrayerTimes, date]);
+
     return (
         // Updated container with more pronounced rounded corners using rounded-xl
         <div
@@ -110,6 +155,19 @@ export default function DaySchedule({
                         ? `${Math.floor(timeLeft / 1000)}s`
                         : `${Math.floor(timeLeft / 3600000)}h ${Math.floor(
                               (timeLeft % 3600000) / 60000
+                          )}m`}
+                </p>
+            )}
+            {/* New: Countdown for Suhoor */}
+            {isToday && suhoorTimeLeft > 0 && (
+                <p className="text-xs text-purple-500 mt-2">
+                    Time until Suhoor:{" "}
+                    {suhoorTimeLeft < 60000
+                        ? `${Math.floor(suhoorTimeLeft / 1000)}s`
+                        : `${Math.floor(
+                              suhoorTimeLeft / 3600000
+                          )}h ${Math.floor(
+                              (suhoorTimeLeft % 3600000) / 60000
                           )}m`}
                 </p>
             )}

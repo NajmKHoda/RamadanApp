@@ -15,9 +15,16 @@
   ],
   "2025-03-01": [
     {
+      "type": "other",
+      "time": "4AM",
+      "location": "Denny's Westwood",
+      "name": "Brother's Suhoor Run",
+      "organization": "MSA"
+    },
+    {
       "type": "taraweeh",
       "time": "7PM",
-      "location": "Pauley Pavillion SE",
+      "location": "Covel North Ridge",
       "details": ""
     }
   ],
@@ -95,7 +102,7 @@
     {
       "type": "taraweeh",
       "time": "7PM",
-      "location": "Pauley Pavillion",
+      "location": "Covel North Ridge",
       "details": ""
     }
   ],
@@ -103,7 +110,7 @@
     {
       "type": "taraweeh",
       "time": "7PM",
-      "location": "SAC Gym Courts 1-3",
+      "location": "Covel North Ridge",
       "details": ""
     }
   ],
@@ -111,7 +118,7 @@
     {
       "type": "taraweeh",
       "time": "8PM",
-      "location": "Pauley Pavillion",
+      "location": "Covel North Ridge",
       "details": ""
     }
   ],
