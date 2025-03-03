@@ -76,6 +76,13 @@
       "time": "7:45PM",
       "location": "Pauley Pavillion SE",
       "details": ""
+    },
+    {
+      "type": "other",
+      "time": "9PM",
+      "location": "House of Mandi Westwood",
+      "name": "Brother's Chai and Cards",
+      "organization": "MSA"
     }
   ],
   "2025-03-06": [
@@ -90,9 +97,23 @@
       "time": "7:45PM",
       "location": "Drake Upper Concourse",
       "details": ""
+    },
+    {
+      "type": "other",
+      "time": "10PM",
+      "location": "House of Mandi Westwood",
+      "name": "Brother's Chai and Cards",
+      "organization": "MSA"
     }
   ],
   "2025-03-07": [
+    {
+      "type": "other",
+      "time": "4AM",
+      "location": "Denny's Westwood",
+      "name": "Sister's Suhoor Run",
+      "organization": "MSA"
+    },
     {
       "type": "Jumaa",
       "time": "1:15PM",
