@@ -66,6 +66,13 @@
   ],
   "2025-03-05": [
     {
+      "type": "other",
+      "time": "4AM",
+      "location": "Rieber Hall LLC Lounge (Room 135)",
+      "name": "Suhoor Pancakes w/ Dr. Khankan",
+      "organization": "MSA"
+    },
+    {
       "type": "iftaar",
       "time": "",
       "location": "Drake",
@@ -179,6 +186,13 @@
     }
   ],
   "2025-03-12": [
+    {
+      "type": "other",
+      "time": "5AM",
+      "location": "Rieber Hall LLC Lounge (Room 135)",
+      "name": "Suhoor Pancakes w/ Dr. Khankan",
+      "organization": "MSA"
+    },
     {
       "type": "iftaar",
       "time": "",
