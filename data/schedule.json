@@ -83,13 +83,6 @@
       "location": "House of Mandi Westwood",
       "name": "Sisters' Chai and Cards",
       "organization": "MSA"
-    },
-    {
-      "type": "other",
-      "time": "11PM",
-      "location": "Insomnia Cookies + Gayley Heights Lobby",
-      "name": "Post Taraweeh Insomnia Cookie Run",
-      "organization": "AMIN + PSU"
     }
   ],
   "2025-03-06": [
@@ -111,6 +104,13 @@
       "location": "House of Mandi Westwood",
       "name": "Brother's Chai and Cards",
       "organization": "MSA"
+    },
+    {
+      "type": "other",
+      "time": "11PM",
+      "location": "Insomnia Cookies + Gayley Heights Lobby",
+      "name": "Post Taraweeh Insomnia Cookie Run",
+      "organization": "AMIN + PSU"
     }
   ],
   "2025-03-07": [
