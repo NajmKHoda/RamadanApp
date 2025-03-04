@@ -60,7 +60,7 @@
     {
       "type": "taraweeh",
       "time": "7:45PM",
-      "location": "Drake Upper Concourse",
+      "location": "Pauley Pavillion NE",
       "details": ""
     }
   ],
@@ -96,13 +96,13 @@
     {
       "type": "iftaar",
       "time": "",
-      "location": "Drake Stadium",
+      "location": "Covel Grand Horizon",
       "details": "Shamshiri"
     },
     {
       "type": "taraweeh",
       "time": "7:45PM",
-      "location": "Drake Upper Concourse",
+      "location": "Covel Grand Horizon",
       "details": ""
     },
     {
@@ -167,7 +167,7 @@
     {
       "type": "taraweeh",
       "time": "8:45PM",
-      "location": "Pauley Pavillion",
+      "location": "Pauley Pavillion N",
       "details": ""
     }
   ],
@@ -181,7 +181,7 @@
     {
       "type": "taraweeh",
       "time": "8:45PM",
-      "location": "Pauley Pavillion",
+      "location": "Pauley Pavillion N",
       "details": ""
     }
   ],
@@ -202,7 +202,7 @@
     {
       "type": "taraweeh",
       "time": "8:45PM",
-      "location": "Pauley Pavillion",
+      "location": "Pauley Pavillion N",
       "details": ""
     }
   ],
@@ -216,7 +216,7 @@
     {
       "type": "taraweeh",
       "time": "8:45PM",
-      "location": "Pauley Pavillion",
+      "location": "Pauley Pavillion N",
       "details": ""
     }
   ],
@@ -230,7 +230,7 @@
     {
       "type": "taraweeh",
       "time": "8:45PM",
-      "location": "Pauley Pavillion",
+      "location": "TBA",
       "details": ""
     }
   ],
@@ -238,7 +238,7 @@
     {
       "type": "taraweeh",
       "time": "8:45PM",
-      "location": "SAC Gym Courts 1-3",
+      "location": "TBA",
       "details": ""
     }
   ],
@@ -246,7 +246,7 @@
     {
       "type": "taraweeh",
       "time": "8:45PM",
-      "location": "Pauley Pavillion",
+      "location": "TBA",
       "details": ""
     }
   ],
@@ -269,7 +269,7 @@
       "type": "iftaar",
       "time": "",
       "location": "Drake Stadium",
-      "details": "Shawarma House Anaheim + Desert (TBA)"
+      "details": "Shawarma House Anaheim + Atayef"
     },
     {
       "type": "taraweeh",
