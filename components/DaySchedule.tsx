@@ -1,28 +1,37 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import PrayerTimes from "./PrayerTimes";
+import { useState, useEffect, useMemo } from "react";
+import PrayerTimesView from "./PrayerTimesView";
 import EventList from "./EventList";
 import { BASE_DATE } from "@/constants/baseDate";
+import { getPrayerTimes } from '@/lib/getPrayerTimes';
 
 interface DayScheduleProps {
     day: "today" | "tomorrow" | "dayAfterTomorrow";
-    prayerTimes: { [key: string]: string } | undefined;
     // optional baseDate prop to override the default BASE_DATE
     baseDate?: Date;
-    // new optional prop for next day's prayer times (for suhoor countdown)
-    nextDayPrayerTimes?: { [key: string]: string };
 }
+
+const HIJRI_FORMATTER = new Intl.DateTimeFormat("en-TN-u-ca-islamic", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+ });
 
 export default function DaySchedule({
     day,
-    prayerTimes,
     baseDate,
-    nextDayPrayerTimes,
 }: DayScheduleProps) {
     const [date, setDate] = useState<Date>(new Date());
     const [timeLeft, setTimeLeft] = useState<number>(0);
     const [suhoorTimeLeft, setSuhoorTimeLeft] = useState<number>(0);
+
+    const prayerTimes = useMemo(() => getPrayerTimes(date), [date]);
+    const nextDayPrayerTimes = useMemo(() => {
+        const nextDay = new Date(date);
+        nextDay.setDate(nextDay.getDate() + 1);
+        return getPrayerTimes(nextDay);
+    }, [date]);
 
     useEffect(() => {
         const base = baseDate ? new Date(baseDate) : new Date(BASE_DATE);
@@ -43,11 +52,7 @@ export default function DaySchedule({
         date.getDate()
     );
     const isToday = normalizedDate.getTime() === normalizedCurrent.getTime();
-    const hijriDate = new Intl.DateTimeFormat("en-TN-u-ca-islamic", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    }).format(date);
+    const hijriDate = HIJRI_FORMATTER.format(date);
 
     // Determine prefix for header based on day prop
     let prefix = "";
@@ -63,20 +68,14 @@ export default function DaySchedule({
     }
 
     useEffect(() => {
-        if (isToday && prayerTimes && prayerTimes["maghrib"]) {
-            const targetTimeStr = prayerTimes["maghrib"];
-            // Assume maghrib time is in "HH:mm" format
-            const [targetHour, targetMinute] = targetTimeStr
-                .split(":")
-                .map(Number);
-            const targetTime = new Date(date);
-            targetTime.setHours(targetHour, targetMinute, 0, 0);
-
+        if (isToday) {
             function updateCountdown() {
-                const diff = targetTime.getTime() - new Date().getTime();
-                setTimeLeft(diff);
+                const diff = prayerTimes.maghrib.getTime() - new Date().getTime();
+                setTimeLeft(Math.max(diff, 0));
             }
+
             updateCountdown();
+
             const intervalId = setInterval(updateCountdown, 1000);
             return () => clearInterval(intervalId);
         }
@@ -84,39 +83,19 @@ export default function DaySchedule({
 
     // Updated suhoor countdown to use isha instead of maghrib
     useEffect(() => {
-        if (
-            isToday &&
-            prayerTimes &&
-            prayerTimes["isha"] &&
-            nextDayPrayerTimes &&
-            nextDayPrayerTimes["fajr"]
-        ) {
-            // Compute today's isha target time instead of maghrib
-            const [ishaHour, ishaMinute] = prayerTimes["isha"]
-                .split(":")
-                .map(Number);
-            const ishaTime = new Date(date);
-            ishaTime.setHours(ishaHour, ishaMinute, 0, 0);
-
-            // Compute tomorrow's fajr target time
-            const tomorrow = new Date(date);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            const [fajrHour, fajrMinute] = nextDayPrayerTimes["fajr"]
-                .split(":")
-                .map(Number);
-            const fajrTime = new Date(tomorrow);
-            fajrTime.setHours(fajrHour, fajrMinute, 0, 0);
-
+        if (isToday) {
             function updateSuhoorCountdown() {
                 const now = new Date();
+
                 // show suhoor countdown only if current time is after isha and before fajr
-                if (now > ishaTime && now < fajrTime) {
-                    const diff = fajrTime.getTime() - now.getTime();
+                if (now > prayerTimes.isha && now < nextDayPrayerTimes.fajr) {
+                    const diff = nextDayPrayerTimes.fajr.getTime() - now.getTime();
                     setSuhoorTimeLeft(diff);
                 } else {
                     setSuhoorTimeLeft(0);
                 }
             }
+
             updateSuhoorCountdown();
             const intervalId = setInterval(updateSuhoorCountdown, 1000);
             return () => clearInterval(intervalId);
@@ -172,13 +151,7 @@ export default function DaySchedule({
                 </p>
             )}
             <p className="text-xs text-gray-500 mb-2 border-b pb-2 md:mb-2"></p>
-            {prayerTimes ? (
-                <PrayerTimes prayerTimes={prayerTimes} />
-            ) : (
-                <div className="text-center text-gray-500">
-                    Prayer times not available
-                </div>
-            )}
+            <PrayerTimesView prayerTimes={prayerTimes} />
             <EventList date={date} />
         </div>
     );
